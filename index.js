@@ -4,11 +4,12 @@ const app = express();
 const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const router = require("./routes/contactRoutes");
+const userRouter = require("./routes/userRoutes");
 connectDB();
 
 app.use(express.json());
 app.use("/api/contacts", router);
-
+app.use("/api/users", userRouter);
 app.get("/", (req, res) => {
   res.json({ message: "server is running" });
 });
