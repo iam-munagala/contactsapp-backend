@@ -7,9 +7,10 @@ const {
   deletContact,
   updateContact,
 } = require("../controllers/contactController");
+const ValidateToken = require("../middlewares/validateToken");
 
 const router = express.Router();
-
+router.use(ValidateToken);
 router.get("/", getContacts);
 
 router.put("/:id", updateContact);
